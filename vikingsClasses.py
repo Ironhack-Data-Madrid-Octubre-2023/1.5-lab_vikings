@@ -55,40 +55,40 @@ class Saxon(Soldier): # Tiene que ser hija de Soldier para poder encontrar lo pr
 
 class War:
     def __init__(self):
-        self.vikingArmy = []
+        self.vikingArmy = [] # Creo dos listas vacías donde ir appendeando
         self.saxonArmy = []
 
     def addViking(self, Viking):
         #self.Viking = Viking
-        self.vikingArmy.append(Viking)
+        self.vikingArmy.append(Viking) #Appendeo un vikingo si llaman a la función
     
     def addSaxon(self, Saxon):
         #self.Saxon = Saxon
-        self.saxonArmy.append(Saxon)
+        self.saxonArmy.append(Saxon) #Appendeo un saxon si llaman a la función
     
     def vikingAttack(self):
-        # Menos lioso si defino los random aparte
-        random_viking = random.choice(self.vikingArmy)
+        # Menos lioso si defino los random lists aparte - Me quedaba muy larga la llamada a la función sino
+        random_viking = random.choice(self.vikingArmy) # He importado arriba el paquete random
         random_saxon = random.choice(self.saxonArmy)
-        random_saxon.receiveDamage(random_viking.strength)
+        dmg = random_saxon.receiveDamage(random_viking.strength) # Llamo a la funcion para el saxon sacado al azar y le aplico la strength del vikingo sacado al azar
 
-        if random_saxon.health <= 0:
+        if random_saxon.health <= 0: # Si la salud nueva del saxon es menor a cero le elimino de la lista
             self.saxonArmy.remove(random_saxon)
-        return random_saxon.receiveDamage(random_viking.strength)
+        return dmg # Y devuelvo el resultado de la llamada a la función para el saxon con la fuerza del vikingo
     
     def saxonAttack(self):
         random_viking = random.choice(self.vikingArmy)
         random_saxon = random.choice(self.saxonArmy)
-        random_viking.receiveDamage(random_saxon.strength)
+        dmg = random_viking.receiveDamage(random_saxon.strength)
 
         if random_viking.health <= 0:
             self.vikingArmy.remove(random_viking)
-        return random_viking.receiveDamage(random_saxon.strength)
+        return dmg
     
     def showStatus(self):
         if len(self.saxonArmy) == 0:
             return ('Vikings have won the war of the century!')
         elif len(self.vikingArmy) == 0:
             return ('Saxons have fought for their lives and survive another day...')
-        elif len(self.saxonArmy) >= 1 and len(self.vikingArmy) >= 1:
+        else:
             return('Vikings and Saxons are still in the thick of battle.') 
