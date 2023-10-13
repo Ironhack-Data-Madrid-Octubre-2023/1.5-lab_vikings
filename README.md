@@ -12,7 +12,7 @@ In this laboratory you will work with the concept of inheritance in Python.
 You will find the following files in the folder of this laboratory:
 
 - `vikingsClasses.py`
-- `1-testSoldier.py`
+- `1-testSoldier.py`.
 - `2-testVikings.py`
 - `3-testSaxons.py`
 - `4-testWar.py`
