@@ -30,7 +30,7 @@ class Viking(Soldier):
 
         self.health -= damage
         
-        if self.health != 0:
+        if self.health > 0:
             return f'{self.name} has received {damage} points of damage'
         elif self.health == 0:
             return f'{self.name} has died in act of combat'
