@@ -333,4 +333,4 @@ Create a game using the classes you defined. For this, you will need to:
 
 ## Additional Challenge for the Nerds
 
-You can try to make your own tests for your code by creating another test file.
+You can try to make your own tests for your code by creating another test file..
