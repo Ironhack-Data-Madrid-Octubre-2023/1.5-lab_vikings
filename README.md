@@ -17,6 +17,8 @@ You will find the following files in the folder of this laboratory:
 - `3-testSaxons.py`
 - `4-testWar.py`
 
+
+:D
 You are free to use any of the code editors you have to open these files.
 
 ### Challenge Question
