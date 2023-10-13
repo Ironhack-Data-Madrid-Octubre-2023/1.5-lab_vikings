@@ -1,4 +1,4 @@
-# Lab | Vikings
+# Lab | Vikings  :)
 ![viking](https://github.com/Ironhack-Data-Madrid-Marzo-2022/1.5-lab-vikings/blob/main/img/Captura%20de%20pantalla%202022-03-25%20a%20las%2012.34.57.png)
 
 ## Introduction
