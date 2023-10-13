@@ -53,9 +53,6 @@ class Saxon(Soldier):
 # War
 class War:
 
-    # self.vikingArmy = []
-    # self.saxonArmy = []
-
     def __init__(self):
         self.vikingArmy = []
         self.saxonArmy = []
@@ -67,29 +64,33 @@ class War:
         self.saxonArmy.append(Saxon)
 
     def vikingAttack(self):
-        receiveDamage = random.choice(self.vikingArmy).strength
-        # receiveDamage = Viking.strength(Viking)
-        random.choice(self.saxonArmy).damage -= receiveDamage
-        self.saxonArmy -= 1
-        return f"result of calling {receiveDamage} of a {Saxon} with the {Viking.strength} of a {Viking}"
+        randomViking = random.choice(self.vikingArmy)
+        randomSaxon = random.choice(self.saxonArmy)
+        vikingAtt = randomSaxon.receiveDamage(randomViking.attack())
+        if randomSaxon.health <= 0:
+            self.saxonArmy.remove(randomSaxon)
+        return vikingAtt
 
     def saxonAttack(self):
-        pass
+        randomViking = random.choice(self.vikingArmy)
+        randomSaxon = random.choice(self.saxonArmy)
+        saxonAtt = randomViking.receiveDamage(randomSaxon.attack())
+        if randomViking.health <= 0:
+            self.vikingArmy.remove(randomViking)
+        return saxonAtt
 
-# The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to the `strength` of a `Saxon`.
+    def showStatus(self):
+        for viking in self.vikingArmy:
+            if viking.health <= 0:
+                self.vikingArmy.remove(viking)
+        
+        for saxon in self.saxonArmy:
+            if saxon.health <= 0:
+                self.saxonArmy.remove(saxon)
 
-# - should be a function
-# - should receive **0 arguments**
-# - should make a `Viking` `receiveDamage()` equal to the `strength` of a `Saxon`
-# - should remove dead vikings from the army
-# - should return **result of calling `receiveDamage()` of a `Viking`** with the `strength` of a `Saxon`
-
-# #### `showStatus()` method
-
-# Returns the current status of the `War` based on the size of the armies.
-
-# - should be a function
-# - should receive **0 arguments**
-# - **if the `Saxon` array is empty**, should return _**"Vikings have won the war of the century!"**_
-# - **if the `Viking` array is empty**, should return _**"Saxons have fought for their lives and survive another day..."**_
-# - **if there are at least 1 `Viking` and 1 `Saxon`**, should return _**"Vikings and Saxons are still in the thick of battle."**_
+        if self.saxonArmy == []:
+            return "Vikings have won the war of the century!"
+        elif self.vikingArmy == []:
+            return "Saxons have fought for their lives and survive another day..."
+        else:
+            return "Vikings and Saxons are still in the thick of battle."
