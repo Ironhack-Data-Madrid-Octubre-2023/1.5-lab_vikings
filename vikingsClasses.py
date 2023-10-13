@@ -72,6 +72,8 @@ class War:
         random_saxon = random.choice(self.saxonArmy)
         dmg = random_saxon.receiveDamage(random_viking.strength) # Llamo a la funcion para el saxon sacado al azar y le aplico la strength del vikingo sacado al azar
 
+        # Importante que he tenido que asignar la llamada a la función a una variable porque sino, al hacer el return está ejecutando de nuevo la función y resta el health 2 veces en lugar de una
+
         if random_saxon.health <= 0: # Si la salud nueva del saxon es menor a cero le elimino de la lista
             self.saxonArmy.remove(random_saxon)
         return dmg # Y devuelvo el resultado de la llamada a la función para el saxon con la fuerza del vikingo
@@ -80,6 +82,8 @@ class War:
         random_viking = random.choice(self.vikingArmy)
         random_saxon = random.choice(self.saxonArmy)
         dmg = random_viking.receiveDamage(random_saxon.strength)
+
+        # Importante que he tenido que asignar la llamada a la función a una variable porque sino, al hacer el return está ejecutando de nuevo la función y resta el health 2 veces en lugar de una
 
         if random_viking.health <= 0:
             self.vikingArmy.remove(random_viking)
@@ -90,5 +94,5 @@ class War:
             return ('Vikings have won the war of the century!')
         elif len(self.vikingArmy) == 0:
             return ('Saxons have fought for their lives and survive another day...')
-        else:
+        else: # No hace falta otro elif porque ya solo existe la opción de que los valores sean distintos de cero (si no entra en los otros dos elif quiere decir que la longitud de las listas es mayor que 0)
             return('Vikings and Saxons are still in the thick of battle.') 
