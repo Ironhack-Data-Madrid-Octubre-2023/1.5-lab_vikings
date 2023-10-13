@@ -127,7 +127,15 @@ In this case, the test says that _Soldier constructor function should receive 2 
 # Soldier
 class Soldier:
     def __init__(self, health, strength):
-        # add code here
+          self.health = health
+          self.strength = strength
+    def attack(self):
+          return self.strength
+
+    def RecieveDamage (self,damage)
+          self.health -= damage
+
+        
 
 # Viking
 class Viking:
