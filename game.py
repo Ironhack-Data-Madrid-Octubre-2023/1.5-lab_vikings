@@ -11,6 +11,7 @@ except:
     print('VIKING WAR SIMULATOR')
     print('-' * 15)
     print('(!pip install art=6.1 to see a much cooler title)')
+    print()
 
 # create War
 
