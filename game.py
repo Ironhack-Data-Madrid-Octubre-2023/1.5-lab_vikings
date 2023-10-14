@@ -3,12 +3,12 @@ import random as rd
 try:
     from art import *
     
-    art = text2art("Viking wars")
+    art = text2art("Viking war simulator")
     print(art)
 
 except:
     print('-' * 15)
-    print('VIKING WARS')
+    print('VIKING WAR SIMULATOR')
     print('-' * 15)
     print('(!pip install art=6.1 to see a much cooler title)')
 
@@ -91,3 +91,27 @@ except:
     print('-' * 15)
 
 # war
+
+round = 0
+
+while True:
+    print("-" * 15)
+    print(f"Round {round}")
+    print("-" * 15)
+    
+    if len(war.vikingArmy) != 0:
+        v = war.vikingAttack()
+
+    if len(war.saxonArmy) != 0:
+        s = war.saxonAttack()
+    
+    print(v)
+    print(s)
+
+    print(war.showStatus())
+
+    if (len(war.saxonArmy) == 0) | (len(war.vikingArmy) == 0):
+        break
+
+    else:
+        round += 1
