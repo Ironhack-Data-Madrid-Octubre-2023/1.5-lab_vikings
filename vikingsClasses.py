@@ -78,8 +78,6 @@ class War:
 
     def addSaxon(self,Saxon):
 
-        War.__init__(self)
-
         self.saxonArmy.append(Saxon)
 
 
@@ -88,20 +86,34 @@ class War:
             random_viking = random.choice(self.vikingArmy)
             random_saxon = random.choice(self.saxonArmy)
 
-            damage = random_saxon.receiveDamage(random_viking.strength)
+            dmg_vk = random_saxon.receiveDamage(random_viking.attack())
 
             if random_saxon.health <= 0:
                 self.saxonArmy.remove(random_saxon)
 
-            return damage
+            return dmg_vk
     
 
-    def saxonAttack():
+    def saxonAttack(self):
+
+            random_viking = random.choice(self.vikingArmy)
+            random_saxon = random.choice(self.saxonArmy)
+
+            dmg_sax = random_viking.receiveDamage(random_saxon.attack())
+
+            if random_viking.health <= 0:
+                self.vikingArmy.remove(random_viking)
+
+            return dmg_sax
 
 
+    def showStatus(self):
 
-        pass
-
-    def showStatus():
-
-        pass
+        if len(self.saxonArmy) == 0:
+            return f'Vikings have won the war of the century!'
+        
+        elif len(self.vikingArmy) == 0:
+            return f'Saxons have fought for their lives and survive another day...'
+        
+        elif len(self.vikingArmy) >=1 and len(self.saxonArmy) >= 1:
+            return f'Vikings and Saxons are still in the thick of battle.'
