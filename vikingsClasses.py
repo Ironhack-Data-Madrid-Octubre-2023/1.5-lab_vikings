@@ -1,4 +1,5 @@
 
+
 # Soldier
 import random as ra
 
@@ -79,24 +80,37 @@ class War:
         chosen_Saxon = ra.choice(self.saxonArmy)
         chosen_Viking = ra.choice(self.vikingArmy)
 
-        chosen_Saxon.receiveDamage(chosen_Viking.attack())
+        damage = chosen_Viking.attack()
+
+        result = chosen_Saxon.receiveDamage(damage)
+
+        if chosen_Saxon.health <= 0:
+            self.saxonArmy.remove(chosen_Saxon)
+
+        return result
         
     
     def saxonAttack(self):
         chosen_Viking = ra.choice(self.vikingArmy)
         chosen_Saxon = ra.choice(self.saxonArmy)
 
-        chosen_Viking.receiveDamage(chosen_Saxon.attack()):
-         return return **result of calling `receiveDamage()` of a `Viking`** with the `strength` of a `Saxon`  
+        damage = chosen_Saxon.attack()
+        result = chosen_Viking.receiveDamage(damage)
+
+        if chosen_Viking.health <= 0:
+            self.vikingArmy.remove(chosen_Viking)
+
+        return result
+ 
     
     def showStatus(self):
-        if len(self.saxonArmy) <= 0:
+        
+        if not self.saxonArmy:
             return "Vikings have won the war of the century!"
-        
-        elif len(self.vikingArmy) <= 0:
+        elif not self.vikingArmy:
             return "Saxons have fought for their lives and survive another day..."
-        
         else:
             return "Vikings and Saxons are still in the thick of battle."
-    
+        
+
     pass
