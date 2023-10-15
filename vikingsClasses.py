@@ -24,12 +24,12 @@ class Soldier:
 
 
 class Viking(Soldier):
-    def __init__(self, name, health, strenght):
+    def __init__(self, name, health, strength):
     
     #attributes
         self.name=name
         self.health=health
-        self.strength=strenght
+        self.strength=strength
 
     #methods
     #will inherit attack() from Soldier
@@ -84,14 +84,42 @@ class War:
         self.saxonArmy.append(saxon)
 
     def vikingAttack(self):
-        if self.saxonArmy: #army not empty
+        if self.saxonArmy: #saxon army not empty
             
             random_saxon = random.choice(self.saxonArmy) #pick random saxon 
             random_viking = random.choice(self.vikingArmy) #pick random viking 
 
-            result = random_saxon.receiveDamage(random_viking.strength) #equal damage of random saxon to strenght of random viking
+            result = random_saxon.receiveDamage(random_viking.strength) #equal damage of random saxon to strength of random viking
 
             self.saxonArmy = [saxon for saxon in self.saxonArmy if saxon.health >0]
 
+            return result 
+
         else:
-            print('Saxon army is empty. Sorry Vikings')
+            print('Saxon army is empty. Sorry Vikings!')
+
+    def saxonAttack(self): 
+        if self.vikingArmy: #viking army is not empty 
+
+            random_viking = random.choice(self.vikingArmy) #pick a random viking
+            random_saxon = random.choice(self.saxonArmy) #pick a random saxon 
+
+            result = random_viking.receiveDamage(random_saxon.strength) 
+
+            self.vikingArmy = [viking for viking in self.vikingArmy if viking.health >0]
+
+            return result
+        
+        else: 
+            print('Viking army is empty. Sorry Saxons!')
+
+
+    def showStatus(self):
+        if not self.saxonArmy: #list is empty 
+            return 'Vikings have won the war of the century!'
+        elif not self.vikingArmy: #list is empty 
+            return 'Saxons have fought for their lives and survive another day...'
+        else: 
+            return 'Vikings and Saxons are still in the thick of battle.'
+
+
